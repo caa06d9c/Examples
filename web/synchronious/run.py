@@ -31,7 +31,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if instance_id:
             message['id'] = instance_id
 
-        self.wfile.write(bytes(json.dumps(message), 'utf8'))
+        self.wfile.write(bytes(json.dumps(message, indent=4) + '\n', 'utf8'))
 
 
 class Thread(threading.Thread):
