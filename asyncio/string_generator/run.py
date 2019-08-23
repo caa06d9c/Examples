@@ -1,11 +1,11 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 from asyncio import ensure_future, gather, run
 import random
 
 alphabet = 'ABCDEFGH'
-size = 5000
+size = 500
 
 
 async def generate():
@@ -29,9 +29,12 @@ if __name__ == '__main__':
 
     my_strings = sorted(run(generate()))
 
-    a = len(my_strings)
+    uniq_my_strings = list(set(my_strings))
 
-    for i in range(1,a):
-        if my_strings[i] == my_strings[i-1]:
-            exit(1)
-    print(str(a))
+    if len(uniq_my_strings) != len(my_strings):
+        exit(1)
+
+    for i in range(1, 5):
+        print(my_strings[i])
+
+    print("...")

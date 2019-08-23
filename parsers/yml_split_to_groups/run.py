@@ -1,5 +1,8 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
+import json
+
 
 if __name__ == '__main__':
 
@@ -15,4 +18,4 @@ if __name__ == '__main__':
             else:
                 result[last_word].append(word)
 
-    print(result)
+    print(json.dumps(result, indent=2))

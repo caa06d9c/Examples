@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import contextlib
@@ -10,3 +10,4 @@ if __name__ == '__main__':
         reader_orig = csv.reader(csv_file, delimiter=',')
         for row in reader_orig:
             row_set = [row[0], row[1], row[2], row[3], row[4]]
+            print(row_set)

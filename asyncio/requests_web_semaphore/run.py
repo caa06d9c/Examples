@@ -1,10 +1,9 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 from aiohttp import ClientSession, client_exceptions
 from asyncio import Semaphore, ensure_future, gather, run
 from json import dumps, loads
-from datetime import datetime
 
 limit = 10
 http_ok = [200]

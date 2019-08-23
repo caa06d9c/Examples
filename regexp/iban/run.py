@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -16,7 +16,7 @@ def normalize(string):
 
 if __name__ == '__main__':
 
-    IBAN_LIST = ['IBAN NL 91ABNA0417463300', 'IBAN NL91ABNA0417164300', 'Iban: NL 69 ABNA 402032566', '']
+    IBAN_LIST = ['IBAN NL 91ABNA0417463300', 'IBAN NL91ABNA0417164300', 'Iban: NL 69 ABNA 4020325616']
 
     STAGE_1 = list()
     for IBAN in IBAN_LIST:

@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import json
 import contextlib
 import csv
@@ -11,6 +14,6 @@ if __name__ == '__main__':
             local_id = el[0]
             res[local_id] = dict()
             res[local_id]['url'] = el[1]
-            res[local_id]['tab'] = el[2]
+            res[local_id]['type'] = el[2]
 
-    print(json.dumps(res))
+    print(json.dumps(res, indent=2))
