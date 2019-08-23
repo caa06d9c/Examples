@@ -1,0 +1,14 @@
+version: "3.2"
+
+services:
+    nginx:
+        image: ddmitrii/nginx-sample:echo2
+        ports:
+            - '80:80'
+    echo1:
+        image: ddmitrii/echo
+        command: --url --id echo1
+
+    echo2:
+        image: ddmitrii/echo
+        command: --url --id echo2

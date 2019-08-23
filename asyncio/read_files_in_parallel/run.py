@@ -1,29 +1,20 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-from asyncio import Semaphore, ensure_future, gather, run
-
-limit = 4
+from asyncio import ensure_future, gather, run
 
 
 async def read(file_list):
     tasks = list()
     result = None
 
-    sem = Semaphore(limit)
-
     for file in file_list:
-        task = ensure_future(read_bounded(file, sem))
+        task = ensure_future(read_one(file))
         tasks.append(task)
 
         result = await gather(*tasks)
 
     return result
-
-
-async def read_bounded(file, sem):
-    async with sem:
-        return await read_one(file)
 
 
 async def read_one(file):
