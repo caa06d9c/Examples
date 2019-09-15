@@ -9,4 +9,6 @@ RUN apk add --no-cache git build-base && \
     pip install -r requirements.txt && \
     apk del build-base git
 
+USER nobody
+
 ENTRYPOINT ["/usr/bin/env", "python3", "-u", "/opt/run.py"]
