@@ -41,7 +41,7 @@ async def scrape_one(url, session):
 
 
 if __name__ == '__main__':
-    urls = ['http://demin.co:8080/echo1/', 'http://demin.co:8080/echo1/']
+    urls = ['http://demin.co/echo1/', 'http://demin.co/echo2/']
     res = run(scrape(urls))
 
     print(dumps(res, indent=4))
