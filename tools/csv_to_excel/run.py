@@ -11,7 +11,7 @@ if __name__ == '__main__':
     workbook = Workbook('file1.xlsx')
     page1 = workbook.add_worksheet()
 
-    with closing(open('file1.csv', 'r')) as csv_file:
+    with closing(open('file1.csv', 'r', encoding='utf8')) as csv_file:
         reader_orig = reader(csv_file, delimiter=' ')
         row = 0
         for el in reader_orig:
