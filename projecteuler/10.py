@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# https://projecteuler.info/problem=7
-# stupid way
+# https://projecteuler.info/problem=10
 
 if __name__ == '__main__':
-    primes = list()
-    primes.append(2)
+    prime = 2
+    res = 2
     current = 0
 
     array = list()
-    for i in range(2, 200000):
+    for i in range(2, 2000000):
         array.append(i)
 
     size = len(array)
@@ -18,21 +17,18 @@ if __name__ == '__main__':
     while True:
         status = False
 
-        for i in range(primes[-1] - 2, size, primes[-1]):
+        for i in range(prime - 2, size, prime):
             array[i] = 0
 
         for i in range(current, size):
             if array[i] != 0:
-                primes.append(array[i])
+                prime = array[i]
                 current = i
                 status = True
+                res += prime
                 break
-
-        if len(primes) == 10001:
-            print(primes[10000])
-            exit(0)
 
         if not status:
             break
 
-    print(len(primes))
+    print(res)
