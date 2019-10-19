@@ -16,7 +16,9 @@ Supported methods:
   
 Supported headers:
   - X-Real-IP ($remote_addr)
+  - X-Forwarded-For ($remote_addr)
   - X-Forwarded-Host ($host)
+  - Host ($host)
   - X-Forwarded-Port ($server_port)
   - X-Forwarded-Proto ($scheme)
   - X-Forwarded-Request ($request)
