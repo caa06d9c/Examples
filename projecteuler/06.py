@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # https://projecteuler.info/problem=6
+# 25164150
 
 if __name__ == '__main__':
     res1 = 0

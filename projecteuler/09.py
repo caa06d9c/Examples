@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # https://projecteuler.info/problem=9
+# 31875000
 
 if __name__ == '__main__':
 
@@ -32,3 +33,5 @@ if __name__ == '__main__':
                         if a + b + c == 1000:
                             print(a * b * c)
                             exit(0)
+
+    exit(1)

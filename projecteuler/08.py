@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # https://projecteuler.info/problem=8
-# stupid way
+# 23514624000
 
 if __name__ == '__main__':
     number = '73167176531330624919225119674426574742355349194934' + \

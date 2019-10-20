@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # https://projecteuler.info/problem=5
+# 232792560
 
 if __name__ == '__main__':
     el = 2520
@@ -18,3 +19,5 @@ if __name__ == '__main__':
 
         print(el)
         exit(0)
+
+    exit(1)
