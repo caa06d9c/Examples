@@ -17,5 +17,3 @@ if __name__ == '__main__':
             res += el
 
     print(res)
-
-

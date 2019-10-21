@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from asyncio import ensure_future, gather, run
-import random
+from random import choice
 
 alphabet = 'ABCDEFGH'
 size = 500
@@ -22,13 +22,12 @@ async def generate():
 
 
 async def generate_one():
-    return ''.join(random.choice(alphabet) for j in range(8))
+    return ''.join(choice(alphabet) for j in range(8))
 
 
 if __name__ == '__main__':
 
     my_strings = sorted(run(generate()))
-
     uniq_my_strings = list(set(my_strings))
 
     if len(uniq_my_strings) != len(my_strings):

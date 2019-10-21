@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """
@@ -8,8 +8,7 @@
 4,4@ex.com
 """
 
-
-import csv
+from csv import reader, writer
 
 if __name__ == '__main__':
 
@@ -17,7 +16,7 @@ if __name__ == '__main__':
 
     in_mem_csv = list()
     with open('file.csv', 'r+') as csv_file:
-        reader_orig = csv.reader(csv_file, delimiter=',')
+        reader_orig = reader(csv_file, delimiter=',')
         for row in reader_orig:
             if row[1] != user:
                 in_mem_csv.append(row)
@@ -25,6 +24,6 @@ if __name__ == '__main__':
         csv_file.close()
 
     with open('file.csv', 'w') as csv_file:
-        out = csv.writer(csv_file, delimiter=',')
+        out = writer(csv_file, delimiter=',')
         out.writerows(in_mem_csv)
     csv_file.close()

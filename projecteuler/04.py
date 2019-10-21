@@ -31,5 +31,3 @@ if __name__ == '__main__':
                     mar = int(res)
 
     print(mar)
-
-

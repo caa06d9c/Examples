@@ -29,6 +29,6 @@ async def read_one(file):
 
 if __name__ == '__main__':
     files = ['1', '2', '3', '4']
-    res = run(read(files))
 
+    res = run(read(files))
     print(res)

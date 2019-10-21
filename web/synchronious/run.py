@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import time
-import socket
 import threading
 import http.server
-import argparse
-import json
+from socket import socket, AF_INET, SOCK_STREAM, SOL_SOCKET, SO_REUSEADDR
+from argparse import ArgumentParser
+from json import dumps
 
 url = False
 instance_id = None
@@ -31,7 +31,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if instance_id:
             message['id'] = instance_id
 
-        self.wfile.write(bytes(json.dumps(message, indent=4) + '\n', 'utf8'))
+        self.wfile.write(bytes(dumps(message, indent=4) + '\n', 'utf8'))
 
 
 class Thread(threading.Thread):
@@ -52,9 +52,9 @@ class Thread(threading.Thread):
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser()
+    parser = ArgumentParser()
     parser.add_argument('--ip', dest="ip", default='0.0.0.0', help='ip address (default: 0.0.0.0)', action="store")
-    parser.add_argument('--port', dest="port", default=8000, help='port (default: 8000)', action="store")
+    parser.add_argument('--port', dest="port", default=80, help='port (default: 80)', action="store")
     parser.add_argument('--url', dest="url", default=False, help='return url', action='store_true')
     parser.add_argument('--id', dest="id", default=None, help='set return id', action='store')
 
@@ -64,8 +64,8 @@ if __name__ == '__main__':
 
     address = (args.ip, args.port)
 
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    sock = socket(AF_INET, SOCK_STREAM)
+    sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
     sock.bind(address)
     sock.listen(3)
 

@@ -4,7 +4,6 @@
 # https://projecteuler.info/problem=12
 # 76576500
 
-from math import ceil
 from lib import get_primes, get_devides
 
 if __name__ == '__main__':

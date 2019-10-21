@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import json
+from json import dumps
 
 if __name__ == '__main__':
     source = {0: 'once', 1: 'twice', 2: 'twice'}
@@ -11,4 +11,4 @@ if __name__ == '__main__':
         if value not in result.values():
             result[key] = value
 
-    print(json.dumps(result, indent=2))
+    print(dumps(result, indent=4))

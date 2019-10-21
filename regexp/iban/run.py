@@ -22,7 +22,3 @@ if __name__ == '__main__':
     for IBAN in IBAN_LIST:
         IBAN_normalized = normalize(IBAN)
         print(IBAN_normalized[2:4], IBAN_normalized[8:])
-
-
-
-

@@ -1,0 +1,4 @@
+# python3.7.3
+aiohttp>=3.5.4
+yajl>=0.3.5
+cryptography>=2.8

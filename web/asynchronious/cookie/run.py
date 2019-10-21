@@ -45,7 +45,7 @@ if __name__ == '__main__':
 
     parser = ArgumentParser()
     parser.add_argument('--ip', dest="ip", default='0.0.0.0', help='ip address (default: 0.0.0.0)', action="store")
-    parser.add_argument('--port', dest="port", default=8000, help='port (default: 8000)', action="store")
+    parser.add_argument('--port', dest="port", default=80, help='port (default: 80)', action="store")
     parser.add_argument('--cookie_key', dest='cookie_key', default='sdjkf2i3u2fd', help='password to encrypt cookie',
                         action="store")
     parser.add_argument('--cookie_lifetime', dest='cookie_lifetime', default=24, help='lifetime in hours',

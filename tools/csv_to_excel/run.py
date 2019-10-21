@@ -30,6 +30,8 @@ if __name__ == '__main__':
 
             row += 1
 
+    workbook.close()
+
     # file2
     workbook = Workbook('file2.xlsx')
     page1 = workbook.add_worksheet()

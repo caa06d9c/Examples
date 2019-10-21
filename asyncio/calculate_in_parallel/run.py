@@ -38,5 +38,4 @@ if __name__ == '__main__':
                 'df2': ['a2', 'b2', 'c2', 'd2']}
 
     res = run(calculate(src_data))
-
     print(dumps(res, indent=4))
