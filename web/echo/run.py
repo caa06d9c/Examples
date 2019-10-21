@@ -38,46 +38,36 @@ async def handler(request):
     path = request.raw_path
     method = request.method
 
+    reply = {
+        'method': method,
+        'path': path
+    }
+
     ip = request.headers.get('X-Forwarded-For')
-    if ip is None:
-        request.headers.get('X-Real-IP')
+    if ip:
+        reply['ip'] = ip
 
     host = request.headers.get('Host')
     if host is None:
         request.headers.get('X-Forwarded-Host')
+    if host:
+        reply['host'] = host
+
+    if tag:
+        reply['tag'] = tag
 
     headers = dict()
     for header in ['X-Forwarded-Port',
                    'X-Forwarded-Proto',
                    'X-Forwarded-Agent',
                    'X-Forwarded-Request',
-                   'Upgrade',
-                   'Connection',
                    'X-Amzn-Trace-Id']:
         result = request.headers.get(header, None)
         if result:
             headers[header] = result
 
-    reply = {
-        'method': method,
-        'path': path,
-        'ip': ip,
-        'tag': tag,
-        'host': host,
-        'headers': headers
-    }
-
-    if tag is None:
-        del reply['tag']
-
-    if ip is None:
-        del reply['ip']
-
-    if host is None:
-        del reply['host']
-
-    if len(headers) == 0:
-        del reply['headers']
+    if len(headers) != 0:
+        reply['headers'] = headers
 
     return dumps(reply, indent=4)
 
