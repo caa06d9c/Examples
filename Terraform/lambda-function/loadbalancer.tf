@@ -10,7 +10,7 @@ resource "aws_lb" "echo" {
   name = "echo"
   internal = false
   load_balancer_type = "application"
-  security_groups = [ aws_security_group.echo-lb.id ]
+  security_groups = [ aws_security_group.echo.id ]
   subnets = [aws_subnet.echo-a.id, aws_subnet.echo-b.id]
 
   access_logs {
