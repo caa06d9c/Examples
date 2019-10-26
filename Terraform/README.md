@@ -5,8 +5,8 @@ This repository has several examples that deploy [Echo](../Python/web/echo) serv
   * [Lambda (function), ELB, S3](./lambda-function)
   
 # Requirements
-Before using scenarios you must provide a valid credentials to `~/.aws/credentials`.
-Minimal configuration should looks like:
+Before using scenarios you must provide valid credentials to `~/.aws/credentials`.
+Minimal configuration should look like:
 ```bash
 # ~/.aws/credentials
 [default]
@@ -15,7 +15,7 @@ aws_secret_access_key=
 region=
 output=json
 ```
-Choose a scenario and adopt `variables.tf` for your needs
+Choose a scenario and adapt `variables.tf` for your needs.
 
 # Execution
 
@@ -26,8 +26,8 @@ terraform applay "echo.plan"
 ```
 
 # Cleaning
-Be aware, S3 bucket can't be deleted in case if something was created inside, so delete im manually.
-At some point this functionality will be added to scenarios.
+Be careful, S3 bucket can't be deleted in case if something was created inside, so delete it manually.
+At some point, this functionality will be added to scenarios.
 
 ```bash
 terraform destroy
