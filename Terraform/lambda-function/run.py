@@ -1,4 +1,8 @@
-import json
+from json import dumps
+from logging import info, getLogger, INFO
+
+logger = getLogger()
+logger.setLevel(INFO)
 
 
 def run(event, context):
@@ -12,6 +16,8 @@ def run(event, context):
     for header in ['x-forwarded-port','x-forwarded-proto']:
         result['headers'][header] = event['headers'][header]
 
+    logger.info(result)
+
     return {
         'isBase64Encoded': False,
         'statusCode': 200,
@@ -19,5 +25,5 @@ def run(event, context):
         'headers': {
             'Content-Type': 'application/json'
         },
-        'body': json.dumps(result, indent=4)
+        'body': dumps(result, indent=4)
     }

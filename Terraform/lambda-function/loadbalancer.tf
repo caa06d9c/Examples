@@ -15,7 +15,7 @@ resource "aws_lb" "echo" {
 
   access_logs {
     bucket  = aws_s3_bucket.echo.bucket
-    prefix  = "ec2"
+    prefix  = "lambda"
     enabled = true
   }
 }

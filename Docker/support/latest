@@ -1,3 +1,4 @@
+#@IgnoreInspection BashAddShebang
 FROM alpine:latest
 
 LABEL maintainer="Dmitrii Demin <mail@demin.co>"

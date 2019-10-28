@@ -2,7 +2,7 @@
 
 This repository has several examples that deploy [Echo](../Python/web/echo) server on top of the AWS services:
   * [EC2 (auto-scaling), ELB, S3](./ec2-auto-scaling)
-  * [Lambda (function), ELB, S3](./lambda-function)
+  * [Lambda (function), ELB, S3, CloudWatch](./lambda-function)
   
 # Requirements
 Before using scenarios you must provide valid credentials to `~/.aws/credentials`.
@@ -23,6 +23,7 @@ Choose a scenario and adapt `variables.tf` for your needs.
 terraform init
 terraform plan -out echo.plan
 terraform applay "echo.plan"
+terraform show | grep dns_name
 ```
 
 # Cleaning
