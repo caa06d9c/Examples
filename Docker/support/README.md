@@ -1,5 +1,6 @@
 [![Docker badge](https://img.shields.io/docker/pulls/caa06d9c/support.svg)](https://hub.docker.com/r/caa06d9c/support/)
 
+# Support
 Alpine-based Docker image for testing and debug purposes. 
 
 The image tagged *latest* has:
