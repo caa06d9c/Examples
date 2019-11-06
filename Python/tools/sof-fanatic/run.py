@@ -87,7 +87,7 @@ if __name__ == '__main__':
                 d.get(actions['bounty'].format(tag))
                 sleep(random(args.min, args.max))
         else:
-            print(action)
+            info(action)
             d.get(actions[action].format(env['USER_ID']))
             sleep(random(args.min, args.max))
 
