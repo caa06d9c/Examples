@@ -5,7 +5,7 @@ It allows to emulate user activity to collect Enthusiast and Fanatic badges at S
 
 Simple usage:
 ```console
-docker run -t --rm -p 5900:5900 -e USER_ID=${SOF_ID} -e USERNAME=${SOF_USERNAME} -e PASSWORD=${SOF_PASSWORD} -e VNC_P=${VNC_PASSWORD} caa06d9c/sof-fanatic --min 5 --max 10 --actions user reputatuion question --tags linux bash python --vnc --questions 5
+docker run -t --rm -p 5900:5900 -e USER_ID=${SOF_ID} -e USERNAME=${SOF_USERNAME} -e PASSWORD=${SOF_PASSWORD} -e VNC_P=${VNC_PASSWORD} caa06d9c/sof-fanatic --min 5 --max 10 --actions user reputation question --tags linux bash python --questions 5 --vnc 
 ```
 Connect to container in MacOS:
 ```

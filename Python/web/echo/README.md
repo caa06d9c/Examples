@@ -22,6 +22,7 @@ Supported headers:
   - X-Forwarded-Proto ($scheme)
   - X-Forwarded-Request ($request)
   - X-Forwarded-Agent ($http_user_agent)
+  - X-Amzn-Trace-Id
   
 ## How to use
 
