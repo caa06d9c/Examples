@@ -1,6 +1,7 @@
 .DS_Store
 .idea
 .terraform
+__pycache__
 *.pem
 *.plan
 *tfstate*
