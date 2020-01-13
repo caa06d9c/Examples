@@ -1,1 +1,3 @@
-boto3>=1.10.2
+boto3>=1.10.50
+yajl>=0.3.5
+aiobotocore.config
