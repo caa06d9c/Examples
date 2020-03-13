@@ -16,10 +16,11 @@ class AfterResponse:
         application.wsgi_app = AfterResponseMiddleware(application.wsgi_app, self)
 
     def flush(self):
-        try:
-            self.function()
-        except Exception:
-            print_exc()
+        if self.function is not None:
+            try:
+                self.function()
+            except Exception:
+                print_exc()
 
 
 class AfterResponseMiddleware:
