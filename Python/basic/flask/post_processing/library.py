@@ -19,6 +19,7 @@ class AfterResponse:
         if self.function is not None:
             try:
                 self.function()
+                self.function = None
             except Exception:
                 print_exc()
 
