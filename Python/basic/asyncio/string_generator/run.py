@@ -9,20 +9,11 @@ size = 500
 
 
 async def generate():
-    tasks = list()
-    result = None
-
-    for el in range(0, size):
-        task = ensure_future(generate_one())
-        tasks.append(task)
-
-        result = await gather(*tasks)
-
-    return list(set(result))
+    return list(set(await gather(*[ensure_future(generate_one()) for _ in range(0, size)])))
 
 
 async def generate_one():
-    return ''.join(choice(alphabet) for j in range(8))
+    return ''.join(choice(alphabet) for _ in range(8))
 
 
 if __name__ == '__main__':

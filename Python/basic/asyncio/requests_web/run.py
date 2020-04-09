@@ -9,23 +9,14 @@ http_ok = [200]
 
 
 async def scrape(url_list):
-
-    tasks = list()
-
     async with ClientSession() as session:
-        for url in url_list:
-            task = ensure_future(scrape_one(url, session))
-            tasks.append(task)
-
-        result = await gather(*tasks)
-
-    return result
+        return await gather(*[ensure_future(scrape_one(url, session)) for url in url_list])
 
 
 async def scrape_one(url, session):
     try:
         async with session.get(url) as response:
-            content = await response.read()
+            content = loads(await response.text())
     except client_exceptions.ClientConnectorError:
         print('Scraping %s failed due to the connection problem', url)
         return False
@@ -33,8 +24,6 @@ async def scrape_one(url, session):
     if response.status not in http_ok:
         print('Scraping%s failed due to the return code %s', url, response.status)
         return False
-
-    content = loads(content.decode('UTF-8'))
 
     return content
 

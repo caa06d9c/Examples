@@ -10,39 +10,26 @@ http_ok = [200]
 
 
 async def scrape(url_list):
-    tasks = list()
     sem = Semaphore(limit)
 
     async with ClientSession() as session:
-        for url in url_list:
-            task = ensure_future(scrape_bounded(url, sem, session))
-            tasks.append(task)
-
-        result = await gather(*tasks)
-
-    return result
+        return await gather(*[ensure_future(scrape_one(url, sem, session)) for url in url_list])
 
 
-async def scrape_bounded(url, sem, session):
+async def scrape_one(url, sem, session):
     async with sem:
-        return await scrape_one(url, session)
+        try:
+            async with session.get(url) as response:
+                content = loads (await response.text())
+        except client_exceptions.ClientConnectorError:
+            print('Scraping %s failed due to the connection problem', url)
+            return False
 
+        if response.status not in http_ok:
+            print('Scraping%s failed due to the return code %s', url, response.status)
+            return False
 
-async def scrape_one(url, session):
-    try:
-        async with session.get(url) as response:
-            content = await response.read()
-    except client_exceptions.ClientConnectorError:
-        print('Scraping %s failed due to the connection problem', url)
-        return False
-
-    if response.status not in http_ok:
-        print('Scraping%s failed due to the return code %s', url, response.status)
-        return False
-
-    content = loads(content.decode('UTF-8'))
-
-    return content
+        return content
 
 
 if __name__ == '__main__':

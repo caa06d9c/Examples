@@ -12,9 +12,7 @@ http_ok = [200]
 async def scrape(url_list):
 
     async with ClientSession() as session:
-        result = await gather(*[ensure_future(scrape_one(url, session)) for url in url_list])
-
-    return result
+        return await gather(*[ensure_future(scrape_one(url, session)) for url in url_list])
 
 
 async def scrape_one(url, session):

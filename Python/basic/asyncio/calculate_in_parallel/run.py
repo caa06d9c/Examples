@@ -6,15 +6,9 @@ from json import dumps
 
 
 async def calculate(data):
-    tasks = list()
     result = dict()
-    temp = None
 
-    for df in data:
-        task = ensure_future(calculate_one(df, data[df]))
-        tasks.append(task)
-
-        temp = await gather(*tasks)
+    temp = await gather(*[ensure_future(calculate_one(df, data[df])) for df in data])
 
     for element in temp:
         result[element['df']] = element['ds']

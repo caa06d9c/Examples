@@ -5,16 +5,7 @@ from asyncio import ensure_future, gather, run
 
 
 async def read(file_list):
-    tasks = list()
-    result = None
-
-    for file in file_list:
-        task = ensure_future(read_one(file))
-        tasks.append(task)
-
-        result = await gather(*tasks)
-
-    return result
+    return await gather(*[ensure_future(read_one(file)) for file in file_list])
 
 
 async def read_one(file):
