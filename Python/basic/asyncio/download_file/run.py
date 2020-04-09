@@ -10,7 +10,6 @@ http_ok = [200]
 
 
 async def scrape(url_list):
-
     async with ClientSession() as session:
         return await gather(*[ensure_future(scrape_one(url, session)) for url in url_list])
 
