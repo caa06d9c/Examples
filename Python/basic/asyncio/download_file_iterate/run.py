@@ -5,10 +5,16 @@ from aiofile import AIOFile
 from aiohttp import ClientSession
 from asyncio import ensure_future, gather, run, Semaphore
 from calendar import monthlen
+from lzma import open as lzma_open
+from struct import calcsize, unpack
+from io import BytesIO
+from json import dumps
 
 http_ok = [200]
 limit = 5
 base_url = 'http://datafeed.dukascopy.com/datafeed/{}/{}/{}/{}/{}h_ticks.bi5'
+fmt = '>3i2f'
+chunk_size = calcsize(fmt)
 
 
 async def download():
@@ -33,6 +39,8 @@ async def download():
 
 async def download_one(pair, year, month, day, hour, session, sem):
     url = base_url.format(pair, year, month, day, hour)
+    data = list()
+
     async with sem:
         async with session.get(url) as response:
             content = await response.read()
@@ -41,18 +49,20 @@ async def download_one(pair, year, month, day, hour, session, sem):
             print(f'Scraping {url} failed due to the return code {response.status}')
             return
 
-        try:
-            content = content.decode('UTF-8')
-        except (UnicodeDecodeError):
-            print(f'Dumping {url} failed due to the incorrect content')
+        if content == b'':
+            print(f'Scraping {url} failed due to the empty content')
             return
 
-        if content != '':
-            async with AIOFile(f'{pair}-{year}-{month}-{day}-{hour}.bi5', 'w') as fl:
-                await fl.write(content)
-        else:
-            print(f'Dumping {url} failed due to the empty content')
-            return
+        with lzma_open(BytesIO(content)) as f:
+            while True:
+                chunk = f.read(chunk_size)
+                if chunk:
+                    data.append(unpack(fmt, chunk))
+                else:
+                    break
+
+        async with AIOFile(f'{pair}-{year}-{month}-{day}-{hour}.bi5', 'w') as fl:
+            await fl.write(dumps(data, indent=4))
 
         return
 
