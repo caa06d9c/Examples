@@ -18,11 +18,11 @@ async def scrape_one(url, session):
         async with session.get(url) as response:
             content = loads(await response.text())
     except client_exceptions.ClientConnectorError:
-        print('Scraping %s failed due to the connection problem', url)
+        print(f'Scraping {url} failed due to the connection problem')
         return False
 
     if response.status not in http_ok:
-        print('Scraping%s failed due to the return code %s', url, response.status)
+        print(f'Scraping {url} failed due to the return code {response.status}')
         return False
 
     return content

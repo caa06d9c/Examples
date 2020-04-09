@@ -23,7 +23,7 @@ async def users(url, auth):
             return False
 
         if response.status not in http_ok:
-            error('users:StatusCode:%s', response.status)
+            error(f'users:StatusCode:{response.status}')
             return False
 
     return content
@@ -37,11 +37,11 @@ async def user(user_list, trg_url, trg_auth):
                     if response.status in http_ok:
                         content = await response.text()
             except client_exceptions.ClientConnectorError:
-                error('user_one:%s:ClientConnectionError', el['username'])
+                error(f"user_one:{el['username']}:ClientConnectionError")
                 return False
 
             if response.status not in http_ok:
-                error('user_one:%s:StatusCode:%s', el['username'], response.status)
+                error(f"user_one:{el['username']}:StatusCode:{response.status}")
                 return False
 
             return loads(content)
