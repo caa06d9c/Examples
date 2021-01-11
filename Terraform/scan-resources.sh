@@ -22,8 +22,8 @@ REGIONS=('us-east-2' \
          'me-south-1' \
          'sa-east-1')
 
-for REGION in ${REGIONS[@]}; do
-    echo $REGION
-    RESULT=$(aws resourcegroupstaggingapi get-resources --region ${REGION})
-    echo ${RESULT}
+for REGION in "${REGIONS[@]}"; do
+    echo "$REGION"
+    RESULT=$(aws resourcegroupstaggingapi get-resources --region "${REGION}")
+    echo "${RESULT}"
 done

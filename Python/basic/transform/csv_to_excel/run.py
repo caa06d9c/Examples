@@ -1,17 +1,34 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# https://stackoverflow.com/questions/58240516/import-csv-files-into-excel-files/58244299#58244299
 
+from argparse import ArgumentParser
 from contextlib import closing
 from csv import reader
 from xlsxwriter import Workbook
+from shutil import rmtree
+import os
+
+store_path = 'files'
+sources = 'sources'
 
 if __name__ == '__main__':
+    parser = ArgumentParser()
+    parser.add_argument('--clean', action='store_true')
+    args = parser.parse_args()
 
-    # file1
-    workbook = Workbook('file1.xlsx')
+    if args.clean:
+        if os.path.isdir(store_path):
+            rmtree(store_path)
+        exit(0)
+
+    if not os.path.isdir(store_path):
+        os.makedirs(store_path)
+
+    workbook = Workbook(f"{store_path}/file1.xlsx")
     page1 = workbook.add_worksheet()
 
-    with closing(open('file1.csv', 'r', encoding='utf8')) as csv_file:
+    with closing(open(f"{sources}/file1.csv", 'r', encoding='utf8')) as csv_file:
         reader_orig = reader(csv_file, delimiter=' ')
         row = 0
         for el in reader_orig:
@@ -33,10 +50,10 @@ if __name__ == '__main__':
     workbook.close()
 
     # file2
-    workbook = Workbook('file2.xlsx')
+    workbook = Workbook(f"{store_path}/file2.xlsx")
     page1 = workbook.add_worksheet()
 
-    with closing(open('file2.csv', 'r')) as csv_file:
+    with closing(open(f"{sources}/file2.csv", 'r')) as csv_file:
         reader_orig = reader(csv_file, delimiter=' ')
         row = 0
         for el in reader_orig:
@@ -56,10 +73,10 @@ if __name__ == '__main__':
     workbook.close()
 
     # file3
-    workbook = Workbook('file3.xlsx')
+    workbook = Workbook(f"{store_path}/file3.xlsx")
     page1 = workbook.add_worksheet()
 
-    with closing(open('file3.csv', 'r')) as csv_file:
+    with closing(open(f"{sources}/file3.csv", 'r')) as csv_file:
         reader_orig = reader(csv_file, delimiter=',')
         row = 0
         for el in reader_orig:

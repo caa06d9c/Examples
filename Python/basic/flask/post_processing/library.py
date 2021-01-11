@@ -15,6 +15,7 @@ class AfterResponse:
         application.after_response = self
         application.wsgi_app = AfterResponseMiddleware(application.wsgi_app, self)
 
+    # noinspection PyBroadException
     def flush(self):
         if self.function is not None:
             try:
@@ -31,6 +32,7 @@ class AfterResponseMiddleware:
 
     def __call__(self, environ, after_response):
         iterator = self.application(environ, after_response)
+        # noinspection PyBroadException
         try:
             return ClosingIterator(iterator, [self.after_response_ext.flush])
         except Exception:

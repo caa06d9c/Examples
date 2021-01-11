@@ -4,11 +4,11 @@
 # https://projecteuler.info/problem=4
 # 906609
 
-if __name__ == '__main__':
-    miv = 100
-    mav = 1000
-    mar = 0
+miv = 100
+mav = 1000
 
+if __name__ == '__main__':
+    mar = 0
     for a in range(miv, mav):
         for b in range(miv, mav):
             res = str(a * b)

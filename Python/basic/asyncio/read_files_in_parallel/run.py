@@ -2,24 +2,21 @@
 # -*- coding: utf-8 -*-
 
 from asyncio import ensure_future, gather, run
+import os
+
+store_path = 'files'
 
 
-async def read(file_list):
-    return await gather(*[ensure_future(read_one(file)) for file in file_list])
+async def read():
+    return await gather(*[ensure_future(read_one(file)) for file in os.listdir(store_path)])
 
 
 async def read_one(file):
-
-    result = list()
-    with open(file, 'r+') as f:
-        for line in f.readlines():
-            result.append(int(line[:-1]))
-
-    return result
+    with open(f"{store_path}/{file}", 'r+') as f:
+        return file, [line[:-1] for line in f.readlines()]
 
 
 if __name__ == '__main__':
-    files = ['1', '2', '3', '4']
-
-    res = run(read(files))
-    print(res)
+    res = run(read())
+    for r in res:
+        print(f"{r[0]} - {r[1]}")

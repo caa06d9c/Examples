@@ -7,7 +7,6 @@
 from math import pow
 
 if __name__ == '__main__':
-
     number = str(int(pow(2, 1000)))
     res = 0
     for el in number:

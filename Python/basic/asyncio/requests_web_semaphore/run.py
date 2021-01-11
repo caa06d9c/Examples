@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# https://stackoverflow.com/questions/55268350/how-to-make-this-python-script-run-faster/55268666#55268666
+# https://stackoverflow.com/questions/55186122/asyncio-aiohttp-not-returning-response/55186376#55186376
 
 from aiohttp import ClientSession, client_exceptions
 from asyncio import Semaphore, ensure_future, gather, run
-from json import dumps, loads
+from yajl import dumps, loads
 
-limit = 10
+semaphore = 10
 http_ok = [200]
+urls = ['http://demin.co/echo1/',
+        'http://demin.co/echo2/']
 
 
 async def scrape(url_list):
-    sem = Semaphore(limit)
+    sem = Semaphore(semaphore)
 
     async with ClientSession() as session:
         return await gather(*[ensure_future(scrape_one(url, sem, session)) for url in url_list])
@@ -20,7 +24,7 @@ async def scrape_one(url, sem, session):
     async with sem:
         try:
             async with session.get(url) as response:
-                content = loads (await response.text())
+                content = await response.text()
         except client_exceptions.ClientConnectorError:
             print(f'Scraping {url} failed due to the connection problem')
             return False
@@ -29,11 +33,8 @@ async def scrape_one(url, sem, session):
             print(f'Scraping {url} failed due to the return code {response.status}')
             return False
 
-        return content
+        return loads(content)
 
 
 if __name__ == '__main__':
-    urls = ['http://demin.co/echo1/', 'http://demin.co/echo2/']
-
-    res = run(scrape(urls))
-    print(dumps(res, indent=4))
+    print(dumps(run(scrape(urls)), indent=4))

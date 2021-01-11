@@ -5,7 +5,7 @@ from yajl import loads, dumps
 from argparse import ArgumentParser
 from aiohttp import ClientSession, client_exceptions, BasicAuth
 from logging import error, getLogger, INFO
-from asyncio import ensure_future, gather, run
+from asyncio import gather, run
 
 tc_users = '{}/httpAuth/app/rest/users'
 tc_user = tc_users + '/id:{}'

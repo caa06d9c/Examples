@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
+# https://stackoverflow.com/questions/55150301/geting-version-of-python-executable-from-a-script/55150531#55150531
 
 from subprocess import Popen, PIPE
 

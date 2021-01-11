@@ -1,11 +1,11 @@
 from json import dumps
-from logging import info, getLogger, INFO
+from logging import getLogger, INFO
 
 logger = getLogger()
 logger.setLevel(INFO)
 
 
-def run(event, context):
+def run(event):
 
     result = {'method': event['httpMethod'],
               'path': event['path'],
@@ -13,7 +13,8 @@ def run(event, context):
               'host': event['headers']['host'],
               'headers': dict()}
 
-    for header in ['x-forwarded-port','x-forwarded-proto']:
+    for header in ['x-forwarded-port',
+                   'x-forwarded-proto']:
         result['headers'][header] = event['headers'][header]
 
     logger.info(result)

@@ -27,13 +27,13 @@ Supported headers:
 ## How to use
 
 ```bash
-docker run -d -p 8080:8080 caa06d9c/echo
-curl localhost:8080/123/123
-curl localhost:8080/echo1/123
+docker run -d -p 80:8080 caa06d9c/echo
+curl localhost/123/123
+curl localhost/echo1/123
 ```
 
 ```bash
-# see the docker-compose.yml file in the repository
+# see the docker-compose.yml file in the reverse-proxy repository
 # be aware, this example works only on Linux
 docker-compose up -d
 ```

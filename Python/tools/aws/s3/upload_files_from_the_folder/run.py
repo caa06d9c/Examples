@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
 from aiobotocore import get_session
 from aiobotocore.config import AioConfig
 from aiofiles import open as aio_open
@@ -15,8 +14,8 @@ from yajl import dumps
 storage_path = 'files'
 
 
-async def main(loop, args):
-    session = get_session(loop=loop)
+async def main(args):
+    session = get_session()
     config = AioConfig(max_pool_connections=args.semaphore)
     home = path.dirname(path.realpath(__file__))
 
@@ -56,7 +55,7 @@ if __name__ == '__main__':
 
     try:
         event_loop = get_event_loop()
-        result = event_loop.run_until_complete(main(event_loop,  parser.parse_args()))
+        result = event_loop.run_until_complete(main(parser.parse_args()))
         print(dumps(result, indent=2))
     except exceptions.ClientError as e:
         print(e)

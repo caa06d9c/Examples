@@ -3,20 +3,22 @@
 
 from aiohttp import ClientSession, client_exceptions
 from asyncio import ensure_future, gather, run
-from json import dumps, loads
+from yajl import dumps, loads
 
 http_ok = [200]
+urls = ['http://demin.co/echo1/',
+        'http://demin.co/echo2/']
 
 
-async def scrape(url_list):
+async def scrape():
     async with ClientSession() as session:
-        return await gather(*[ensure_future(scrape_one(url, session)) for url in url_list])
+        return await gather(*[ensure_future(scrape_one(url, session)) for url in urls])
 
 
 async def scrape_one(url, session):
     try:
         async with session.get(url) as response:
-            content = loads(await response.text())
+            content = await response.text()
     except client_exceptions.ClientConnectorError:
         print(f'Scraping {url} failed due to the connection problem')
         return False
@@ -25,11 +27,8 @@ async def scrape_one(url, session):
         print(f'Scraping {url} failed due to the return code {response.status}')
         return False
 
-    return content
+    return loads(content)
 
 
 if __name__ == '__main__':
-    urls = ['http://demin.co/echo1/', 'http://demin.co/echo2/']
-
-    res = run(scrape(urls))
-    print(dumps(res, indent=4))
+    print(dumps(run(scrape()), indent=4))

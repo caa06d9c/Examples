@@ -1,0 +1,4 @@
+botocore>=1.17.44
+aiobotocore>=1.1.2
+aiofiles>=0.6.0
+yajl>=0.3.5

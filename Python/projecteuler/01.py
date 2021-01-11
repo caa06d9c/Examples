@@ -5,15 +5,4 @@
 # 233168
 
 if __name__ == '__main__':
-    limit = 1000
-    a = 3
-    b = 5
-    res = 0
-
-    for el in range(1, limit):
-        if el % a == 0:
-            res += el
-        elif el % b == 0:
-            res += el
-
-    print(res)
+    print(sum([i for i in range(1, 1000) if i % 3 == 0 or i % 5 == 0]))

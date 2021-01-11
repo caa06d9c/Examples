@@ -7,7 +7,6 @@
 from lib import get_primes, get_devides
 
 if __name__ == '__main__':
-
     n = 1
     limit = 500
     number = int((n + 1)*n*(1/2))

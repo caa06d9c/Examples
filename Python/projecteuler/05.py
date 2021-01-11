@@ -4,9 +4,9 @@
 # https://projecteuler.info/problem=5
 # 232792560
 
-if __name__ == '__main__':
-    el = 2520
+el = 2520
 
+if __name__ == '__main__':
     while True:
         st = True
         for d in [11, 13, 14, 16, 17, 28, 19, 20]:

@@ -1,8 +1,12 @@
-.DS_Store
-.idea
-.terraform
-__pycache__
-venv
+.idea/
+!.idea/runConfigurations/
 *.pem
 *.plan
 *tfstate*
+.DS_Store
+.terraform
+__pycache__
+venv*
+Python/basic/game
+Python/basic/web-streaming
+Python/basic/chrome*

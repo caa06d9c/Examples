@@ -3,7 +3,7 @@
 
 from ssl import create_default_context
 from socket import socket
-from json import dumps
+from yajl import dumps
 
 if __name__ == "__main__":
     site = ''

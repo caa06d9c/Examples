@@ -4,7 +4,6 @@
 from json import dumps
 
 if __name__ == '__main__':
-
     result = dict()
     last_word = ''
 

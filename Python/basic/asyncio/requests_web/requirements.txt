@@ -1,2 +1,0 @@
-# python3.7.3
-aiohttp>=3.5.4

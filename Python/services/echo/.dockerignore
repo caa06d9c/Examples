@@ -1,1 +1,5 @@
-docker-compose.yml
+.*
+*.md
+Dockerfile
+reverse-proxy
+requirements.txt

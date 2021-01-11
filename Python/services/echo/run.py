@@ -4,6 +4,7 @@
 from aiohttp import web
 from argparse import ArgumentParser
 from yajl import dumps, load
+import os
 
 routes = web.RouteTableDef()
 tag = None
@@ -89,7 +90,11 @@ if __name__ == '__main__':
         tag = args.tag
 
     if args.config:
-        with open('./config.json') as f:
+        if os.path.isfile('config.json'):
+            cfg = 'config.json'
+        else:
+            cfg = 'config.example.json'
+        with open(cfg) as f:
             tag = load(f)['tag']
 
     web.run_app(app, host=args.ip, port=args.port)

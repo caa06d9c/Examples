@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# https://stackoverflow.com/questions/55184474/python-multiple-processes-consuming-iterating-over-single-generator-divide-and/55184907#55184907
 
 from asyncio import ensure_future, gather, run
 from random import choice
 
 alphabet = 'ABCDEFGH'
-size = 500
+size = 10
 
 
 async def generate():
@@ -17,14 +18,10 @@ async def generate_one():
 
 
 if __name__ == '__main__':
-
     my_strings = sorted(run(generate()))
     uniq_my_strings = list(set(my_strings))
 
     if len(uniq_my_strings) != len(my_strings):
         exit(1)
 
-    for i in range(1, 5):
-        print(my_strings[i])
-
-    print("...")
+    print('\n'.join('{}'.format(i) for i in my_strings))

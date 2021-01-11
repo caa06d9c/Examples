@@ -3,6 +3,7 @@ from django.template import loader
 from .models import Entry
 
 
+# noinspection PyUnresolvedReferences
 def index(request):
     entries = list()
     result = ' '.join(q.value for q in Entry.objects.all())
@@ -17,6 +18,7 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
+# noinspection PyUnresolvedReferences
 def entry(request, item):
     value = Entry.objects.get(pk=item)
     date = Entry.objects.get(pk=item).pub_date

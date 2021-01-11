@@ -1,4 +1,4 @@
-FROM python:3.7.3-alpine3.9
+FROM python:3.8-alpine
 LABEL maintainer="Dmitrii Demin <mail@demin.co>"
 
 WORKDIR /opt/

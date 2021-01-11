@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# https://stackoverflow.com/questions/55224403/how-to-convert-postman-oauth-2-0-to-python/55224873#55224873
 
 from requests import post, auth, exceptions
 from json import loads

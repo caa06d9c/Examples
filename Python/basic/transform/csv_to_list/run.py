@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# https://stackoverflow.com/questions/55179962/python-print-duplicate-dataset-in-a-csv-file-csv-reader/55180238#55180238
 
 from contextlib import closing
 from csv import reader

@@ -1,8 +1,0 @@
-data "aws_instances" "workers" {
-  instance_tags = {
-    Type = var.type
-  }
-}
-
-output "lb_dns" { value = aws_lb.echo.dns_name }
-output "instances" { value = data.aws_instances.workers.public_ips }

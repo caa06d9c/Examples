@@ -16,6 +16,7 @@ schema = {
 }
 
 
+# noinspection PyPep8Naming
 class Handler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -34,6 +35,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.wfile.write(bytes(dumps(message, indent=4) + '\n', 'utf8'))
 
 
+# noinspection PyShadowingNames
 class Thread(threading.Thread):
     def __init__(self, i):
         threading.Thread.__init__(self)
@@ -42,9 +44,11 @@ class Thread(threading.Thread):
         self.start()
 
     def run(self):
+        # noinspection PyArgumentList
         httpd = http.server.HTTPServer(address, Handler, False)
 
         httpd.socket = sock
+        # noinspection PyAttributeOutsideInit
         httpd.server_bind = self.server_close = lambda self: None
 
         httpd.serve_forever()

@@ -1,5 +1,4 @@
-# Django
-Minimal application
+# Django / minimal
 
 Simple usage:
 ```console
