@@ -1,0 +1,16 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: etls
+  namespace: default
+spec:
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          containers:
+          - image: caa06d9c/cronjob
+            name: etls
+          restartPolicy: Never
+  schedule: "*/5 * * * *"
