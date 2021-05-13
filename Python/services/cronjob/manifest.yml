@@ -2,15 +2,31 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: etls
+  labels:
+    etls.label: 'etls-cronjob'
   namespace: default
 spec:
   jobTemplate:
     spec:
       backoffLimit: 0
       template:
+        metadata:
+          labels:
+            etls.label: 'etls-cronjob'
         spec:
           containers:
           - image: caa06d9c/cronjob
             name: etls
+            command:
+              - 'python3'
+              - '/opt/run.py'
+              - '-c'
+              - '5'
+              - '-e'
+              - '-1'
+              - '-t'
+              - '30'
+              - '-s'
+              - '300000'
           restartPolicy: Never
   schedule: "*/5 * * * *"
