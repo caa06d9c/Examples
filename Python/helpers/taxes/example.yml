@@ -1,0 +1,50 @@
+2021:
+  profile1:
+    income:                      # required
+       pay_frequency: xxx        # options: annually
+       value: yyy
+    insurance:                   # optional
+      pay_frequency: xxx         # options: monthly, semi-monthly
+      value:
+        medicine: yyy            # at least 1 required if insurance is on, script just calculates values in dict
+        dental: yyy
+        vision: yyy
+        others: yyy
+    401k:                        # optional
+      pay_frequency: xxx         # options: annually
+      value: yyy                 # options: max, % of gross income, or exact value
+    w4_4c:                       # optional, any other payments
+      pay_frequency: xxx         # options: annually, semi-monthly
+  profile2:
+    income:
+      pay_frequency: xxx
+      value: yyy
+    self_employment: True        # experimental block, do not use, otherwise result can be wrong
+2022:
+  profile1:
+    income:
+      pay_frequency: xxx
+      value: yyy
+    insurance:
+      pay_frequency: xxx
+      value:
+        medicine: yyy
+        others: yyy
+    401k:
+      pay_frequency: xxx
+      value: yyy
+    w4_4c:
+      pay-frequency: xxx
+      value: yyy
+  profile2:
+    income:
+      pay_frequency: xxx
+      value: yyy
+    insurance:
+      pay_frequency: xxx
+      value:
+        dental: yyy
+        vision: yyy
+    401k:
+      pay_frequency: xxx
+      value: yyy
