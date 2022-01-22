@@ -7,6 +7,7 @@ Limitations:
   * Supports only W2
   * Supports only federal taxes, so local should be added as withholding in section w4_4c.
   * Ony for families filling jointly without dependencies.
+  * Max summary income is limited to 628300 for 2021 and 647850 for 2022 
 
 
 Simple usage:
