@@ -5,3 +5,4 @@ This repository has several useful DevOps scenarios/scripts/etc:
   * [Terraform](./Terraform)
   * [Docker](./Docker)
   * [Bash](./Bash)
+  * [Ansible](./Ansible)
