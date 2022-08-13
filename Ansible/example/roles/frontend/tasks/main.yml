@@ -1,0 +1,5 @@
+- name: debug_role_task
+  ansible.builtin.debug:
+    msg: doing specific task for frontend
+
+

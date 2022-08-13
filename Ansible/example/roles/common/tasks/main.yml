@@ -1,0 +1,7 @@
+- name: debug_vars
+  ansible.builtin.debug:
+    msg: "{{ item }}"
+  with_items:
+    - host is set to {{ host }}
+    - group is set to {{ group }}
+    - role is set to {{ role }}

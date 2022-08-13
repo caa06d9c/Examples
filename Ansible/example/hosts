@@ -1,0 +1,7 @@
+[backend]
+be_centos ansible_host=localhost
+be_debian ansible_host=localhost
+
+[frontend]
+fe_centos ansible_host=localhost
+fe_debian ansible_host=localhost

@@ -1,0 +1,6 @@
+---
+- hosts: frontend
+  gather_facts: no
+  roles:
+    - common
+    - frontend
