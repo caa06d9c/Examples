@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 # https://stackoverflow.com/questions/61105464/how-to-download-multiple-files-using-asyncio-and-wget-in-python/61129896#61129896
 
 from aiofile import AIOFile
